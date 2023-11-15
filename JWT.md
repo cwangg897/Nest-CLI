@@ -58,3 +58,26 @@ import * as bcrypt from 'bcrypt';
   }
 
 ```
+
+
+### 토큰 갱신
+```ts
+    async rotateToken(token: string, isRefreshToken: boolean) {
+        const decoded = this.jwtService.verify(token, {
+            secret: JWT_SECRET,
+        });
+
+        if(decoded.type !== 'refresh'){
+            throw new UnauthorizedException('토큰 재발급은 Refresh 토큰으로만 가능합니다!');
+        }
+
+        return this.signToken({
+            ...decoded,
+        }, isRefreshToken);
+    }
+
+```
+
+### refereshToken이 만료되면 어찌할가
+ access token을 검증하여 refresh token 재발급 <br>
+`https://inpa.tistory.com/entry/WEB-📚-Access-Token-Refresh-Token-원리-feat-JWT [Inpa Dev 👨‍💻:티스토리]` <br>
