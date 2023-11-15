@@ -50,4 +50,11 @@ import * as bcrypt from 'bcrypt';
         });
     }
 
+// 토큰으로 로그인하는 경우 vefiry검증 payload를 반환한다
+  async verify(token: string) {
+    return this.jwtService.verify(token, {
+      secret: JWT_SECRET,
+    });
+  }
+
 ```
