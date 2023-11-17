@@ -2,6 +2,11 @@
 사용하는 방법은 root경로에 .env로하는데 개발환경과 production환경이 있다면은 <br>
 production.env | dev.env를 하면된다. <br>
 
+### 사용방법
+`pnpn add @nestjs/config`를 하면 node에서 직접다루는것이아닌 더 편하게 다룰 수 있다
+
+
+
 
 ### 설정 방법
 app.module.ts에 `ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true})` 을 추가한다
