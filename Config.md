@@ -65,3 +65,8 @@ import configuration from './config/configuration';
 })
 export class AppModule {}
 ```
+
+
+### 노드에서 환경변수 바꾸는법
+`NODE_ENV=development nest start --watch`을 package.json에 넣어두면 매번 명령어를 바꾸지않아도 된다.
+
