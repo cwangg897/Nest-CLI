@@ -88,3 +88,20 @@ export class AppModule {}
 ### 노드에서 환경변수 바꾸는법
 `NODE_ENV=development nest start --watch`을 package.json에 넣어두면 매번 명령어를 바꾸지않아도 된다.
 
+
+### 궁금
+예를 들어, emailConfig는 load 배열에 포함된 설정 로더로 가정하겠습니다. <br>
+이 설정 로더는 이메일 관련 설정을 반환하는 함수 또는 클래스 일 것입니다. <br> ConfigModule.forRoot()는 이러한 설정 로더들을 실행하고 반환된 설정을 모두 합쳐 최종적인 설정 객체를 만듭니다.
+
+```ts
+ConfigModule.forRoot({
+  envFilePath:
+    process.env.NODE_ENV === 'production'
+      ? '.production.env'
+      : process.env.NODE_ENV === 'dev'
+        ? '.dev.env'
+        : '.starge.env',
+  load: [emailConfig]
+}),
+```
+위의 코드에서는 emailConfig가 설정 로더로 사용되고, ConfigModule는 emailConfig에서 반환된 설정과 환경 파일에서 읽은 설정을 합쳐 최종적인 설정 객체를 생성합니다. <br> 이를 통해 여러 소스에서 가져온 설정들을 효과적으로 관리할 수 있습니다.
