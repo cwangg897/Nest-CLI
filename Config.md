@@ -3,7 +3,7 @@
 production.env | dev.env를 하면된다. <br>
 
 ### 사용방법
-`pnpm add @nestjs/config`를 하면 node에서 직접다루는것이아닌 더 편하게 다룰 수 있다
+`pnpm add @nestjs/config cross-env`를 하면 node에서 직접다루는것이아닌 더 편하게 다룰 수 있다
 
 ```ts
 imports: [
